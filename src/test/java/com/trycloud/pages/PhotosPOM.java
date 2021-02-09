@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
-public class PhotosPOM {
+public class PhotosPOM extends PageBase {
 
     public PhotosPOM(){
         PageFactory.initElements(Driver.getDriver(), this);

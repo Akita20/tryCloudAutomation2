@@ -1,5 +1,5 @@
 package com.trycloud.pages;
 
-public class TalkPOM {
+public class TalkPOM extends PageBase {
 
 }
