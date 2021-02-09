@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class EmailPagePOM extends PageBase {
-    public EmailPagePOM() {
+public class MailPagePOM extends PageBase {
+    public MailPagePOM() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -33,6 +33,18 @@ public class EmailPagePOM extends PageBase {
     public WebElement inputPassword;
     @FindBy(xpath = "//input[@class='primary']")
     public WebElement connectTab;
+
+    public void emailIconClick(){ emailIcon.click();}
+    public void connectYourMailAccountC(){connectYourMailAccount.click();}
+    public void autoTabClick(){autoTab.click();}
+    public void manualTabClick (){ manualTab.click();}
+    public void nameClick(){name.click();}
+    public void inputUserClick(){ inputUser.click();}
+    public void mailAddressClick(){mailAddress.click();}
+    public void inputMailAddressClick(){inputMailAddress.click();}
+    public void passwordClick(){password.click();}
+    public void inputPasswordClick(){inputPassword.click();}
+    public void connectTabClick(){connectTab.click();}
 
 
 }
