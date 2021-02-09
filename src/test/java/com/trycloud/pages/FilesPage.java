@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilesPage {
+public class FilesPage extends PageBase {
 
     public FilesPage(){
         PageFactory.initElements(Driver.getDriver(), this);
