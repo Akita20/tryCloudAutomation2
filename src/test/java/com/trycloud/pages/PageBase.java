@@ -107,29 +107,9 @@ public class PageBase {
     }
 
 
-    public ArrayList listModulesButtons() {
-        ArrayList<WebElement> listModulesButtons = new ArrayList<>();
-        listModulesButtons.addAll(Arrays.asList(buttonDashboard, buttonFiles, buttonPhotos, buttonActivity, buttonTalk, buttonMail, buttonContacts, buttonCircle,
-                buttonCalendar, buttonDeck));
 
-        return listModulesButtons;
-    }
 
-    public LinkedHashMap mapModulesButton() {
-        LinkedHashMap<WebElement, String> mapModulesButtons = new LinkedHashMap<>();
-        mapModulesButtons.put(buttonDashboard, "Dashboard");
-        mapModulesButtons.put(buttonFiles, "Files");
-        mapModulesButtons.put(buttonPhotos, "Photos");
-        mapModulesButtons.put(buttonActivity, "Activity");
-        mapModulesButtons.put(buttonTalk, "Talk");
-        mapModulesButtons.put(buttonMail, "Mail");
-        mapModulesButtons.put(buttonContacts, "Contacts");
-        mapModulesButtons.put(buttonCircle, "Circle");
-        mapModulesButtons.put(buttonCalendar, "Calendar");
-        mapModulesButtons.put(buttonDeck, "Deck");
 
-        return mapModulesButtons;
-    }
 
 
 }
