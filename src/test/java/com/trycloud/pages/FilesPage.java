@@ -2,6 +2,7 @@ package com.trycloud.pages;
 
 import com.trycloud.utilities.BrowserUtils;
 import com.trycloud.utilities.Driver;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -61,11 +62,23 @@ public class FilesPage {
     @FindBy(xpath = "//a[@class='menuitem action action-delete permanent']")
     public WebElement deleteFolderButton;
 
+    @FindBy(xpath = "//a[@class='menuitem action action-details permanent']")
+    public WebElement detailsOption;
+
     @FindBy(xpath = "//td[@class='filename ui-draggable ui-draggable-handle']")
     public List<WebElement> filesList;
 
     @FindBy(xpath = "//span[@class='nametext extra-data']")
     public List<WebElement> deletedFiles;
+
+    @FindBy(id = "commentsTabView")
+    public WebElement commentsButton;
+
+    @FindBy(xpath = "//div[@class='message']")
+    public WebElement inputComment;
+
+    @FindBy(xpath = "//ul//div[@class='message']")
+    public List<WebElement> displayedMessages;
 
     public void clickFilesButton(){
         filesButton.click();
@@ -73,10 +86,6 @@ public class FilesPage {
 
     public void clickAllFilesButton(){
         allFilesButton.click();
-    }
-
-    public void clickDeleteFolder(){
-        deleteFolderButton.click();
     }
 
     public void clickDeletedFilesButton(){
@@ -93,6 +102,15 @@ public class FilesPage {
         BrowserUtils.sleep(3);
         deleteFolderButton.click();
     }
+
+    public void writeCommentToFile(String message){
+        actionIcons.get(0).click();
+        detailsOption.click();
+        commentsButton.click();
+        inputComment.sendKeys(message+ Keys.ENTER);
+    }
+
+
 
 
 
