@@ -4,6 +4,7 @@ import com.trycloud.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
 
 public class ContactPOM {
     public ContactPOM() {
@@ -23,6 +24,19 @@ public class ContactPOM {
 
     @FindBy(xpath = "//li[@id='newgroup']/a")
     public WebElement buttonNewGroup;
+
+    @FindBy(css = "button.settings-button")
+    public WebElement buttonSettings;
+
+    @FindBy(css = "a.app-navigation-toggle")
+    public WebElement buttonToggle;
+
+    String sideBarButtons="//span[@title='%s']";
+
+
+    public String t1(String text){
+       return String.format(sideBarButtons,text);
+    }
 
 
 }
