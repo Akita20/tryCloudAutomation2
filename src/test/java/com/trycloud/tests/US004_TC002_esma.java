@@ -56,6 +56,7 @@ public class US004_TC002_esma extends TestBase {
 
         //I want to assert that the actualResult is equals to the message we sent
         Assert.assertEquals(actualResult, (message));
+        //
 
     }
 
