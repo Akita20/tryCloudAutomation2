@@ -1,6 +1,7 @@
 package com.trycloud.tests;
 
 import com.github.javafaker.Faker;
+import com.trycloud.pages.FilesPage;
 import com.trycloud.tests.base.TestBase;
 import com.trycloud.utilities.BrowserUtils;
 import com.trycloud.utilities.Driver;
@@ -18,41 +19,44 @@ public class US_003_TC006_Adnan extends TestBase {
 
         login();
 
-        WebElement fileButton = Driver.getDriver().findElement(By.xpath("(//a[@aria-label='Files'])[1]"));
-        fileButton.click();
+        //Creating files page object in order to use that class variables and methods
+        FilesPage filesPage = new FilesPage();
+
+        //go to the files module
+        filesPage.clickFilesButton();
 
         BrowserUtils.sleep(2);
 
-        WebElement plusIcon = Driver.getDriver().findElement(By.xpath("//a[@class='button new']"));
-        plusIcon.click();
+        // click (+) icon
+        filesPage.addFileIcon.click();
 
-        WebElement newFolderButton = Driver.getDriver().findElement(By.xpath("//a[.='New folder']"));
-
-        newFolderButton.click();
-
-        WebElement folderName = Driver.getDriver().findElement(By.xpath("//input[@id='view13-input-folder']"));
+        // In order to write new folder name first we need to delete default name
+        filesPage.newFolderButton.click();
+        filesPage.folderName.sendKeys(Keys.BACK_SPACE);
         BrowserUtils.sleep(2);
-        folderName.sendKeys(Keys.BACK_SPACE);
 
-        BrowserUtils.sleep(1);
-
+        // [Here i am hiding top secret information for each country :) ] and want to get this folder name data from java faker.Faker class is not in the test case requirements.I just made it up.
         Faker faker = new Faker();
         String name = faker.country().name();
-        folderName.sendKeys(name + Keys.ENTER);
+        filesPage.folderName.sendKeys(name + Keys.ENTER);
 
-        // if new folder name is same as one of the existed ones then aready exist text should be display.
-        String existingFolderName = Driver.getDriver().findElement(By.xpath("//a[@class='name']")).getText();
-        if (name.equals(existingFolderName)) {
+        // if new folder name is same as one of the existed ones, 'already exist' text should be display.
+        // String existingFolderName = Driver.getDriver().findElement(By.xpath("//a[@class='name']")).getText();
+        //This is also not required in my test case but i thought it should be.
+        for (WebElement eachExistingFolderName : filesPage.filesList) {
 
-            String alreadyExistText = Driver.getDriver().findElement(By.xpath("//div[@class='tooltip-inner']")).getText();
-            Assert.assertEquals(alreadyExistText, name + " already exist");
+            if (name.equals(eachExistingFolderName.getText())) {
+
+                String alreadyExistText = filesPage.alreadyExistText.getText();
+                Assert.assertEquals(alreadyExistText, name + " already exist is not displayed");
+            }
 
         }
+
+
         BrowserUtils.sleep(2);
 
-
-        WebElement addedFolder = Driver.getDriver().findElement(By.xpath("//div[@class='thumbnail']"));
-
-        Assert.assertTrue(addedFolder.isDisplayed());
+      // verify added folder is displayed after creating new folder
+        Assert.assertTrue(filesPage.addedFolder.isDisplayed());
     }
 }

@@ -1,6 +1,7 @@
 package com.trycloud.tests;
 
 
+import com.trycloud.pages.FilesPage;
 import com.trycloud.tests.base.TestBase;
 import com.trycloud.utilities.BrowserUtils;
 import com.trycloud.utilities.Driver;
@@ -15,13 +16,16 @@ public class US_003_TC005_Adnan extends TestBase {
     public void test() {
 
         login();
-        WebElement fileButton = Driver.getDriver().findElement(By.xpath("(//a[@aria-label='Files'])[1]"));
-        fileButton.click();
+        //Creating files page object in order to use that class variables and methods
+        FilesPage filesPage = new FilesPage();
+
+        //go to the files module
+        filesPage.clickFilesButton();
 
         BrowserUtils.sleep(2);
 
-        WebElement plusIcon = Driver.getDriver().findElement(By.xpath("//a[@class='button new']"));
-        plusIcon.click();
+        // click (+) icon
+        filesPage.addFileIcon.click();
 
        // WebElement uploadFileButton = Driver.getDriver().findElement(By.xpath("//label[@for='file_upload_start']"));
 
