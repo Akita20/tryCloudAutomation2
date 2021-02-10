@@ -23,11 +23,12 @@ public class US_003_TC005_Adnan extends TestBase {
         WebElement plusIcon = Driver.getDriver().findElement(By.xpath("//a[@class='button new']"));
         plusIcon.click();
 
-        WebElement uploadFileButton = Driver.getDriver().findElement(By.xpath("//label[@for='file_upload_start']"));
+       // WebElement uploadFileButton = Driver.getDriver().findElement(By.xpath("//label[@for='file_upload_start']"));
 
-        uploadFileButton.sendKeys("C:\\Users\\ADNAN\\Desktop\\Screenshot 2021-02-04 193055.png"+ Keys.ENTER);
+        // uploadFileButton.sendKeys("C:\\Users\\ADNAN\\Desktop\\Screenshot 2021-02-04 193055.png");
 
-
+        WebElement sth = Driver.getDriver().findElement(By.xpath("//input[@type='file']"));
+        sth.sendKeys("C:\\\\Users\\\\ADNAN\\\\Desktop\\\\Screenshot 2021-02-04 193055.png");
         BrowserUtils.sleep(2);
 
     }
