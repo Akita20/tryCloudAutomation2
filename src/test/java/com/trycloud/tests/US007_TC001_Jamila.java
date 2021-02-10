@@ -28,9 +28,9 @@ public class US007_TC001_Jamila extends TestBase {
         WebElement searchBox= Driver.getDriver().findElement(By.xpath("//input[@type='search']"));
         searchBox.sendKeys("watan");
         searchBox.click();
-        String actualTitle=Driver.getDriver().getTitle();
+        String actualTitle= Driver.getDriver().findElement(By.xpath("//strong[.='watan']")).getText();
         BrowserUtils.sleep(2);
-        WebElement expectedTitle= Driver.getDriver().findElement(By.xpath("ul[@class='unified-search__results unified-search__results-files']"));
+        String expectedTitle= "watan";
 
 
        //ul[@class='unified-search__results unified-search__results-files']
