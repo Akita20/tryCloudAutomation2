@@ -75,6 +75,14 @@ public class FilesPage extends PageBase {
     @FindBy(xpath = "//div[@class='thumbnail']")
     public WebElement addedFolder;
 
+    //added upload file button
+    @FindBy(xpath = "//input[@type='file']")
+    public WebElement uploadFileButton;
+
+    // for displaying file after added
+    @FindBy(xpath = "//span[.='film listesi']")
+    public WebElement addedFile;
+
 
     @FindBy(xpath = "//a[@class='menuitem action action-delete permanent']")
     public WebElement deleteFolderButton;

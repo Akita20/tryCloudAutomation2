@@ -10,6 +10,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class US_003_TC005_Adnan extends TestBase {
@@ -29,17 +30,15 @@ public class US_003_TC005_Adnan extends TestBase {
         // click (+) icon
         filesPage.addFileIcon.click();
 
-       // WebElement uploadFileButton = Driver.getDriver().findElement(By.xpath("//label[@for='file_upload_start']"));
+      // locate the upload file button and use drag and drop option to upload the file
 
-        // uploadFileButton.sendKeys("C:\\Users\\ADNAN\\Desktop\\Screenshot 2021-02-04 193055.png");
-
-        WebElement sth = Driver.getDriver().findElement(By.xpath("//input[@type='file']"));
-
-        sth.sendKeys("C:\'Users\'ADNAN\'Desktop\'film listesi.txt");
+        filesPage.uploadFileButton.sendKeys("C:\\Users\\ADNAN\\Desktop\\film listesi.txt");
 
         BrowserUtils.sleep(2);
 
-        //for some reason it didnt worked! Please enlightened me
+        Assert.assertTrue(filesPage.addedFile.isDisplayed());
+
+        Driver.closeDriver();
 
     }
 

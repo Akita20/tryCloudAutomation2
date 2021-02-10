@@ -58,5 +58,7 @@ public class US_003_TC006_Adnan extends TestBase {
 
       // verify added folder is displayed after creating new folder
         Assert.assertTrue(filesPage.addedFolder.isDisplayed());
+
+        Driver.closeDriver();
     }
 }
