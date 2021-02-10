@@ -17,9 +17,6 @@ public class FilesPage extends PageBase {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(xpath = "(//a[@aria-label ='Files'])[1]")
-    public WebElement filesButton;
-
     @FindBy(id = "app-navigation-toggle")
     public WebElement navigationIcon;
 
@@ -44,6 +41,9 @@ public class FilesPage extends PageBase {
     @FindBy(xpath = "//a[@class='icon-home']")
     public WebElement homeIcon;
 
+    @FindBy(xpath = "//a[@class='action action-share permanent']")
+    public WebElement shareIcon;
+
     @FindBy(xpath = "//a[@class='button new']")
     public WebElement addFileIcon;
 
@@ -58,6 +58,23 @@ public class FilesPage extends PageBase {
 
     @FindBy(xpath = "//a[@class='action action-menu permanent']")
     public List<WebElement> actionIcons;
+
+    //added this web element to locate new folder button
+    @FindBy(xpath = "//a[.='New folder']")
+    public  WebElement newFolderButton;
+
+    //added folder name after creating new folder
+    @FindBy(xpath = "//input[@id='view13-input-folder']")
+    public WebElement folderName;
+
+    //added "already exist" text
+    @FindBy(xpath = "//div[@class='tooltip-inner']")
+    public WebElement alreadyExistText;
+
+    //added folder should display after creating new folder
+    @FindBy(xpath = "//div[@class='thumbnail']")
+    public WebElement addedFolder;
+
 
     @FindBy(xpath = "//a[@class='menuitem action action-delete permanent']")
     public WebElement deleteFolderButton;
@@ -81,7 +98,7 @@ public class FilesPage extends PageBase {
     public List<WebElement> displayedMessages;
 
     public void clickFilesButton(){
-        filesButton.click();
+        buttonFiles.click();
     }
 
     public void clickAllFilesButton(){
