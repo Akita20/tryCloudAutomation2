@@ -5,7 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class NewContact {
+import java.util.List;
+
+public class NewContact extends ContactPOM{
     public NewContact() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
@@ -55,7 +57,8 @@ public class NewContact {
     @FindBy(xpath = "//input[@placeholder='Add contact in group']")
     public WebElement boxGroups;
     //remember the add property part
-
+    @FindBy(xpath = "//div[contains(@title,' ')]")
+    public List<WebElement> newPropertyOptions;
 
 
 }

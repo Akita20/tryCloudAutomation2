@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class NewGroup {
+public class NewGroup extends ContactPOM{
     public NewGroup(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
