@@ -7,7 +7,9 @@ import com.trycloud.utilities.BrowserUtils;
 import com.trycloud.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
 public class US_003_TC005_Adnan extends TestBase {
@@ -32,7 +34,9 @@ public class US_003_TC005_Adnan extends TestBase {
         // uploadFileButton.sendKeys("C:\\Users\\ADNAN\\Desktop\\Screenshot 2021-02-04 193055.png");
 
         WebElement sth = Driver.getDriver().findElement(By.xpath("//input[@type='file']"));
-        sth.sendKeys("C:\\\\Users\\\\ADNAN\\\\Desktop\\\\Screenshot 2021-02-04 193055.png");
+
+        sth.sendKeys("C:\'Users\'ADNAN\'Desktop\'film listesi.txt");
+
         BrowserUtils.sleep(2);
 
     }
