@@ -103,11 +103,8 @@ public class FilesPage extends PageBase {
     @FindBy(xpath = "//span[@class='icon icon-starred']")
     public WebElement removeStarButton;
 
-    @FindBy(xpath = "//span[.='Remove from favorites']")
-    public WebElement removeStarFromFav;
-
-    @FindBy(xpath = "//span[.='Add to favorites']")
-    public WebElement addToFav;
+    @FindBy(xpath = "//a[@data-action='Favorite']/span[2]")
+    public WebElement addOrRemoveStarButton;
 
     @FindBy(xpath = "(//h2[.='No files in here'])[1]")
     public WebElement noFilesInHere;
