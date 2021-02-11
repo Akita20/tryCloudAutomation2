@@ -1,37 +1,46 @@
 package com.trycloud.tests;
 
+import com.trycloud.pages.FilesPage;
 import com.trycloud.tests.base.TestBase;
+import com.trycloud.utilities.BrowserUtils;
 import com.trycloud.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class US3_TC8_1_karlygash extends TestBase {
 
     @Test
-    public void delete_file_test(){
+    public void delete_file_test() {
         login();
+        // go to Files Module
+        FilesPage filesPage = new FilesPage();
+        filesPage.clickFilesButton();
+        // click on All Files
+        filesPage.clickAllFilesButton();
+        // Click on the 1st file
+        WebElement fileToDelete = filesPage.fileToDelete();
+        String deletedFileTitle = fileToDelete.getText();
+        System.out.println("deletedFileTitle = " + deletedFileTitle);
 
-        WebElement filesButton = Driver.getDriver().findElement(By.xpath("(//a[@class='active'])[1]"));
+        filesPage.deleteFile();
 
-        filesButton.click();
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+        wait.until(ExpectedConditions.invisibilityOf(fileToDelete));
 
-        WebElement noFilesInHereText = Driver.getDriver().findElement(By.xpath("(//h2[.='No files in here'])[1]"));
+        filesPage.clickDeletedFilesButton();
 
-        WebElement addIcon = Driver.getDriver().findElement(By.xpath("//a[@class='button new']"));
-        WebElement newFolder = Driver.getDriver().findElement(By.xpath("//a[@data-templatename='New folder']"));
+        boolean fileIsDeleted = false;
+        for (WebElement eachDeletedFile : filesPage.deletedFiles){
 
-        if (noFilesInHereText.isDisplayed()){
-            addIcon.click();
-            newFolder.click();
-
-
-
+            if (eachDeletedFile.getAttribute("data-original-title").equalsIgnoreCase(deletedFileTitle)){
+                fileIsDeleted = true;
+            }
         }
-
-
-
-
+        Assert.assertTrue(fileIsDeleted);
 
 
     }
