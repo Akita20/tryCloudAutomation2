@@ -1,5 +1,7 @@
-package com.trycloud.tests.base;
+package com.trycloud.tests;
 
+import com.trycloud.pages.FilesPage;
+import com.trycloud.tests.base.TestBase;
 import com.trycloud.utilities.BrowserUtils;
 import com.trycloud.utilities.Driver;
 import org.openqa.selenium.By;
@@ -14,9 +16,8 @@ public class US003_TC001_inci extends TestBase {
         //1.log in as a user
         login();
         //2.open Files module
-        WebElement fileModuleButton= Driver.getDriver().findElement(By.xpath("//li[@data-id='files']"));
-        //3.verify the page title is equals Files modules title
-        fileModuleButton.click();
+        FilesPage filesPage=new FilesPage();
+        filesPage.clickFilesButton();
         BrowserUtils.sleep(3);
         Assert.assertTrue(Driver.getDriver().getTitle().contains("Files"));
     }

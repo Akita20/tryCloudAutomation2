@@ -1,5 +1,6 @@
 package com.trycloud.tests.base;
 
+import com.trycloud.pages.FilesPage;
 import com.trycloud.utilities.BrowserUtils;
 import com.trycloud.utilities.Driver;
 import org.openqa.selenium.By;
@@ -14,15 +15,13 @@ public class US003_TC002_inci extends TestBase{
       //1.login as a user
         login();
         //2.open Files module
-        WebElement fileModuleButton= Driver.getDriver().findElement(By.xpath("//li[@data-id='files']"));
-        fileModuleButton.click();
+        FilesPage filesPage=new FilesPage();
+        filesPage.clickFilesButton();
         BrowserUtils.sleep(3);
       //3.click the top lef checkbox of the table
-        WebElement leftCheckboxButton=Driver.getDriver().findElement(By.xpath("//label[@for='select_all_files']"));
-        leftCheckboxButton.click();
+       filesPage.selectAllFilesButton.click();
       //4.Assert all the files are selected
-        WebElement allSelectedFiles=Driver.getDriver().findElement(By.xpath("//*[@class='selection']"));
-        Assert.assertTrue(allSelectedFiles.isDisplayed());
+       //I will use table to assert all check boxes are displayed
     }
     @AfterClass
     public void teardown() {

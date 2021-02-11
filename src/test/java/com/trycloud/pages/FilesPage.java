@@ -96,6 +96,9 @@ public class FilesPage extends PageBase {
 
     @FindBy(xpath = "//ul//div[@class='message']")
     public List<WebElement> displayedMessages;
+    @FindBy(xpath = "//label[@for='select_all_files']")
+    public WebElement selectAllFilesButton;
+
 
     public void clickFilesButton(){
         buttonFiles.click();
