@@ -97,6 +97,27 @@ public class FilesPage extends PageBase {
     @FindBy(xpath = "//ul//div[@class='message']")
     public List<WebElement> displayedMessages;
 
+    @FindBy(xpath = "//a[@class='action action-menu permanent']")
+    public WebElement threeDots;
+
+    @FindBy(xpath = "//span[@class='icon icon-starred']")
+    public WebElement removeStarButton;
+
+    @FindBy(xpath = "//span[.='Remove from favorites']")
+    public WebElement removeStarFromFav;
+
+    @FindBy(xpath = "//span[.='Add to favorites']")
+    public WebElement addToFav;
+
+    @FindBy(xpath = "(//h2[.='No files in here'])[1]")
+    public WebElement noFilesInHere;
+
+    @FindBy(xpath = "(//div[@class='thumbnail'])[2]")
+    public WebElement file;
+
+    @FindBy(xpath = "//h2[.='No favorites yet']")
+    public WebElement noFavoritesYet;
+
     public void clickFilesButton(){
         buttonFiles.click();
     }
