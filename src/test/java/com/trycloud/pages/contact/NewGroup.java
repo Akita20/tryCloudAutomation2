@@ -5,9 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class NewGroup extends ContactPOM{
-    public NewGroup(){
-        PageFactory.initElements(Driver.getDriver(),this);
+import java.util.List;
+
+public class NewGroup extends ContactPOM {
+    public NewGroup() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
     //***pre-condition  to see boxNewGroupName  and boxSubmitForNewGroup is:
     // you need to press buttonNewGroup first ***
@@ -20,6 +22,28 @@ public class NewGroup extends ContactPOM{
 
     @FindBy(xpath = "//button[@class='primary']")
     public WebElement buttonAddNewContactViaGroup;
-    //*****************************************************************//
+    /*      ****************************************************************
+     After pressing buttonAddNewContactViaGroup a pop up bubble will open which
+     you can search contacts and add to group the below webElements are for that
+     window
+            ****************************************************************
+
+     */
+    @FindBy(xpath = "//div[@class='modal-container']")
+    public WebElement windowSearchContactsViaGroup;
+
+    @FindBy(xpath = "//input[contains(@placeholder,'Search')]")
+    public WebElement buttonSearchContactsViaGroup;
+
+    @FindBy(xpath = "//button[@class='navigation__button-left']")
+    public WebElement buttonCancelViaGroup;
+
+    //it gives all users appear in the bubble
+    @FindBy(xpath = "//span[@class='user-bubble__title']")
+    public List<WebElement> usersOnBubble;
+
+    @FindBy(xpath = "//button[@class='navigation__button-right primary']")
+    public WebElement buttonAddToGroup;
+
 
 }
