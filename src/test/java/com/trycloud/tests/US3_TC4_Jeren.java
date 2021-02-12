@@ -6,55 +6,49 @@ import com.trycloud.tests.base.TestBase;
 import com.trycloud.utilities.BrowserUtils;
 import com.trycloud.utilities.Driver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class US3_TC4_Jeren extends TestBase {
 
-    @Test
+    @Test(description = "Verify User can remove file from favorites")
     public void test2(){
         // login to the application
         login();
-
         // Creating an obj to get webElement from PageBase
         PageBase pageBase = new PageBase();
         pageBase.buttonFiles.click();
-
         // Creating an obj to get webElement from FilesPage
         FilesPage filesPage = new FilesPage();
 
         //Click action-icon from any file on the page
         filesPage.threeDots.click();
 
-        //
-        if(filesPage.addOrRemoveStarButton.getText().equals("Remove from favorites")){ // Compare the texts of button
-            filesPage.addOrRemoveStarButton.click(); //Click “Remove from Favorites” option
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 4);
+
+        // Compare the texts of button
+        if(filesPage.addOrRemoveStarButton.getText().equals("Remove from favorites")){
+
+            //Click “Remove from Favorites” option
+            filesPage.addOrRemoveStarButton.click();
 
             // Clicking to "Favorites" sub module
-            BrowserUtils.sleep(2);
             filesPage.favoritesButton.click();
 
-
            //Verify that the file is removed from Favorites sub-module’s table.
-            BrowserUtils.sleep(4);
-            Assert.assertTrue(filesPage.noFavoritesYet.getText().equalsIgnoreCase("No Favorites Yet"));
+            wait.until(ExpectedConditions.visibilityOf(filesPage.noFavoritesYet));
+            Assert.assertTrue(filesPage.noFavoritesYet.getText().equals("No favorites yet"));
 
         }else if (filesPage.addOrRemoveStarButton.getText().equals("Add to favorites")){
 
-            BrowserUtils.sleep(2);
-            filesPage.addOrRemoveStarButton.click();  // Choose “Add to favorites” option
-
-            BrowserUtils.sleep(4);
-            filesPage.threeDots.click();  //Clicking to action icon button three dots
-
-            BrowserUtils.sleep(2);
-            filesPage.addOrRemoveStarButton.click(); // Choose “Remove from favorites” option
-
-            filesPage.favoritesButton.click();   // Click “Favorites” sub-module on the lest side
+            // Click “Favorites” sub-module on the lest side
+            filesPage.favoritesButton.click();
 
             //Verify the chosen file is NOT listed on the table
-            BrowserUtils.sleep(2);
-            Assert.assertTrue(filesPage.noFavoritesYet.getText().equalsIgnoreCase("No Favorites Yet"));
+            wait.until(ExpectedConditions.visibilityOf(filesPage.noFavoritesYet));
+            Assert.assertTrue(filesPage.noFavoritesYet.getText().equals("No favorites yet"));
         }
     }
 }

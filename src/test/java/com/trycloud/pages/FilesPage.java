@@ -75,7 +75,6 @@ public class FilesPage extends PageBase {
     @FindBy(xpath = "//div[@class='thumbnail']")
     public WebElement addedFolder;
 
-
     @FindBy(xpath = "//a[@class='menuitem action action-delete permanent']")
     public WebElement deleteFolderButton;
 
@@ -115,6 +114,9 @@ public class FilesPage extends PageBase {
     @FindBy(xpath = "//h2[.='No favorites yet']")
     public WebElement noFavoritesYet;
 
+    @FindBy(xpath = "(//span[@class='icon icon-starred'])[2]")
+    public WebElement starIcon;
+
     public void clickFilesButton(){
         buttonFiles.click();
     }
@@ -144,10 +146,4 @@ public class FilesPage extends PageBase {
         commentsButton.click();
         inputComment.sendKeys(message+ Keys.ENTER);
     }
-
-
-
-
-
-
 }
