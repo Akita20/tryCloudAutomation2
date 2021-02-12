@@ -9,18 +9,17 @@ import org.testng.annotations.Test;
 
 public class US005_TC001_esma extends TestBase {
     WebDriver driver= Driver.getDriver();
-    //Test case #1 - verify users can access to Talks module
-    //1. Login as a user
-    //2. Click “Contacts” module
-    //3. Verify the page tile is Contents module’s tile
-    @Test
+
+    @Test(description = "//Test case #1 - verify users can access to Talks module")
     public void verify_users_access_talkModule_via_Contacts(){
+        //1. Login as a user
         login();
         PageBase page=new PageBase();
         page.buttonContactMenuClick();
+        //2. Click “Contacts” module
         page.contactsUnderContactMenuBar.get(0).click();
         String name= page.selectContactFromContactMenuBar("Dory");
-        System.out.println(name);
+        //3. Verify the page tile is Contents module’s tile
         Assert.assertTrue(driver.getTitle().contains(name));
 
     }
