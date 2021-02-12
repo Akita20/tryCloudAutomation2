@@ -56,9 +56,19 @@ public class NewContact extends ContactPOM{
 
     @FindBy(xpath = "//input[@placeholder='Add contact in group']")
     public WebElement boxGroups;
-    //remember the add property part
-    @FindBy(xpath = "//div[contains(@title,' ')]")
-    public List<WebElement> newPropertyOptions;
+
+
+    @FindBy(xpath = "//input[@placeholder='Choose property type']")
+    public WebElement boxNewPropertyOption;
+
+//you can use this string array to send keys and test boxNewPropertyOption
+  public   String[] properties = {"Address", "Birthday", "Date of death", "Detailed name", "Email",
+            "Federated Cloud ID", "Gender", "Instant messaging", "Location", "Nickname",
+            "Notes", "Phone", "Phonetic first name", "Phonetic last name", "Related contacts", "Relationship to you",
+            "Social network", "Spoken languages", "Timezone", "Website"};
+
+
+
 
 
 }
