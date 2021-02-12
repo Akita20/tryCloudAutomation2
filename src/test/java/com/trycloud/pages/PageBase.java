@@ -5,15 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
+import java.util.List;
 
 
 public class PageBase {
 
-    public PageBase(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public PageBase() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(xpath = "(//a[@aria-label='Dashboard'])[1]")
@@ -48,6 +46,10 @@ public class PageBase {
     public WebElement buttonMenuToggle;
     @FindBy(className = "logo logo-icon")
     public WebElement buttonTryCloudLogo;
+    @FindBy(xpath = "//div[@id='contactsmenu-contacts']/div/div/div/div[1]")
+    public List<WebElement> contactsUnderContactMenuBar;
+    @FindBy(xpath = "//input[@id='contactsmenu-search']")
+    public WebElement boxSearchUnderContactMenuBar;
 
 
     public void buttonDashboardClick() {
@@ -106,10 +108,16 @@ public class PageBase {
         buttonMenuToggle.click();
     }
 
-
-
-
-
+    public String selectContactFromContactMenuBar(String name) {
+        String nameOfContact = "";
+        for (WebElement element : contactsUnderContactMenuBar) {
+            if (element.getText().contains(name)) {
+                element.click();
+                nameOfContact = element.getText();
+            }
+        }
+        return nameOfContact;
+    }
 
 
 }
