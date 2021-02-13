@@ -46,6 +46,7 @@ public class TC03_US007 extends TestBase {
             }
         }
         Assert.assertTrue(fileIsDisplayed);
+        //
     }
 }
 
