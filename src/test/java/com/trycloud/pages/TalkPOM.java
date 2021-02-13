@@ -19,8 +19,7 @@ public class TalkPOM extends PageBase {
         // Talk button
         @FindBy(xpath = "(//a[@aria-label='Talk'])[1]")
         public WebElement buttonTalk;
-
-        // search button on the left side
+       // search button on the left side
         @FindBy(xpath = "//input[contains(@placeholder,'Search conversations')]")
         public WebElement SearchConversation;
         @FindBy(className = "notifications-button menutoggle")
