@@ -1,5 +1,6 @@
 package com.trycloud.tests;
 
+import com.trycloud.pages.FilesPage;
 import com.trycloud.pages.TalkPOM;
 import com.trycloud.tests.base.TestBase;
 import com.trycloud.utilities.BrowserUtils;
@@ -7,90 +8,51 @@ import com.trycloud.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class TC03_US007 extends TestBase {
     @Test
     public void US003_TC07() {
 
-        login();
-        TalkPOM talkPOM=new TalkPOM();
-
+       login();
         WebElement fileButton = Driver.getDriver().findElement(By.xpath("(//a[@aria-label='Files'])[1]"));
-        String path = "\\Users\\15026\\Desktop\\Jair4.png";
-
         fileButton.click();
+        String path = "C:\\Users\\15026\\Desktop\\Ruslan.jpg";
         BrowserUtils.sleep(2);
-
-
-        WebElement anyFolder = Driver.getDriver().findElement(By.xpath("(//div[@class='file-name'])[1]"));
-
-        BrowserUtils.sleep(2);
-
-        WebElement plus = Driver.getDriver().findElement(By.id("body-user"));
+        WebElement plus = Driver.getDriver().findElement(By.xpath("//span[@class='icon icon-add']"));
         plus.click();
-
-
-        WebElement uploadFileButton = Driver.getDriver().findElement
-                (By.xpath("//label[@for='file_upload_start']"));
-
+        WebElement uploadFileButton = Driver.getDriver().findElement(By.xpath("//input[@type='file']"));
         uploadFileButton.sendKeys(path);
+        String expectedFileName = "Ruslan";
+        //  Driver.getDriver().navigate().refresh();
+        List<WebElement> listOfLinks = Driver.getDriver().findElements(By.xpath("//*[@id='fileList']/tr/td[2]/a/span/span"));
+        for (WebElement eachName : listOfLinks) {
+            if (eachName.getText().contains("Ruslan")) {
+                String target=(eachName.getText());
+                System.out.println(target+  " is Displayed in the page");
+            }
 
-
+        }
     }
-
-
 }
 
 
-//@Test
-//    public void US003_TC07() {
-//
-//        login();
-//        WebElement fileButton = Driver.getDriver().findElement(By.xpath("(//a[@aria-label='Files'])[1]"));
-//        String path = "\\Users\\15026\\Desktop\\Jair4.png";
-//
-//        fileButton.click();
-//        //Creating files page object in order to use that class variables and methods
-//        FilesPage filesPage = new FilesPage();
-//        TalkPOM talkPOM = new TalkPOM();
-//        //go to the files module
-//        filesPage.clickFilesButton();
-//        BrowserUtils.sleep(2);
-//
-//        // click (+) icon
-//        filesPage.addFileIcon.click();
-//        BrowserUtils.sleep(1);
-////    login();
-//
-//        //   WebElement fileButton = Driver.getDriver().findElement(By.xpath("//a[@class='nav-icon-files svg active']"));
-//        //     String path = "\\Users\\15026\\Desktop\\Jair4.png";
-//
-//        WebElement anyFolder = Driver.getDriver().findElement(By.xpath("(//div[@class='file-name'])[1]"));
-//        //  fileButton.click();
-//        // BrowserUtils.sleep(2);
-//
-//        BrowserUtils.sleep(2);
-//
-//        WebElement plus = Driver.getDriver().findElement(By.id("body-user"));
-//        plus.click();
-//        // WebElement anyFolder = Driver.getDriver().findElement(By.xpath("(//div[@class='file-name'])[1]"));
-//
-//        // BrowserUtils.sleep(2);
-//
-//        WebElement uploadFileButton = Driver.getDriver().findElement
-//                (By.xpath("//label[@for='file_upload_start']"));
-//        //  WebElement plus = Driver.getDriver().findElement(By.id("body-user"));
-//        //  plus.click();
-//
-//        uploadFileButton.sendKeys(path);
-//
-//        // WebElement uploadFileButton = Driver.getDriver().findElement
-//        // (By.xpath("//input[@type='file']"));
-//
-//        //  uploadFileButton.sendKeys(path);
-//
-//
-//    }
+
+        //for (WebElement eachName : listOfLinks) {
+          //  if (eachName.getText().equals("Ruslan")) {
+            //    System.out.println("The file is exist");
+            //} else {
+          //      System.out.println("the file is not ");
+       //     }
+
+            //ul[@class=‘conversations’]/li
+
+
+
 
 

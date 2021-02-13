@@ -17,17 +17,15 @@ public class US03_TC09 extends TestBase {
         WebElement settingButton= Driver.getDriver().findElement(By.id("body-user"));
         settingButton.click();
     }
-}
-// @Test
-//    public void US03_TC09(){
-//
-//        login();
-//        WebElement fileButton = Driver.getDriver().findElement(By.xpath("(//a[@aria-label='Files'])[1]"));
-//        fileButton.click();
-//        BrowserUtils.sleep(2);
-//        WebElement settingButton= Driver.getDriver().findElement(By.id("body-user"));
-//        WebElement settingButton= Driver.getDriver().findElement(By.xpath("//button[@class='settings-button']"));
-//        settingButton.click();
-//        settingButton.isEnabled();
-//
-//    }
+
+ @Test
+    public void US031_TC09(){
+
+      login();
+       WebElement fileButton = Driver.getDriver().findElement(By.xpath("(//a[@aria-label='Files'])[1]"));
+        fileButton.click();
+        BrowserUtils.sleep(2);
+        WebElement settingButton= Driver.getDriver().findElement(By.xpath("//button[@class='settings-button']"));
+      settingButton.click();
+       settingButton.isEnabled();
+ }}
