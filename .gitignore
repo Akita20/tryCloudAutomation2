@@ -1,3 +1,4 @@
-.idea/
-tryCloudAutomation2.iml
-target/
+/.idea/
+/tryCloudAutomation2.iml
+/target/
+

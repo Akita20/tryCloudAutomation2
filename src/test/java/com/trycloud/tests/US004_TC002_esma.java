@@ -19,9 +19,9 @@ public class US004_TC002_esma extends TestBase {
 
     @Test(description = "Validation of users can send message via Talk module by searching name")
     public void t1() {
-//        1. Login as a user
+        // 1. Login as a user
         login();
-//        2. Click Talks module
+        // 2. Click Talks module
         WebElement buttonTalk = driver.findElement(By.xpath("(//a[@aria-label='Talk'])[1]"));
         buttonTalk.click();
 
@@ -30,25 +30,24 @@ public class US004_TC002_esma extends TestBase {
         String searchInput = "User100";
         //used dynamic wait for sending searInput
         sendTheKeys(searchBox, 15, searchInput);
-
         //When you search All the users  are in the same format so I stored the locator as String
         String searchResult = "//a[@aria-label='Conversation, %s']";
         //with String.format method I passed as xpath (searchIResult) and instead of %s it will pass--> searchInput
         WebElement user = driver.findElement(By.xpath(String.format(searchResult, searchInput)));
         //click to the user
         user.click();
-//        4. Write a message
+        //4. Write a message
         Faker faker = new Faker();
         String message = faker.ancient().hero();
         WebElement messageBox = driver.findElement(By.xpath("//div[contains(@placeholder,'Write')]"));
         sendTheKeys(messageBox, 15, message);
-//        5. Click submit button
+        //5. Click submit button
         WebElement buttonSubmit = driver.findElement(By.xpath("//button[@aria-label='Send message']"));
         //used dynamic wait method
       BrowserUtils.clickOn(buttonSubmit,20);
-//        6. Verify the message is displayed on the conversation log
+        //6. Verify the message is displayed on the conversation log
 
-//        The message that we send it displayed with this locator %s--> will be the text we sent
+        //The message that we send it displayed with this locator %s--> will be the text we sent
         String messageSentText = "//div[.='%s']";
         // again used String format to put the message as text instead of %s
         WebElement messageSent = driver.findElement(By.xpath(String.format(messageSentText, message)));
@@ -57,6 +56,7 @@ public class US004_TC002_esma extends TestBase {
 
         //I want to assert that the actualResult is equals to the message we sent
         Assert.assertEquals(actualResult, (message));
+        //
 
     }
 
